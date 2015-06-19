@@ -1,0 +1,48 @@
+void setup()
+{
+size(displayWidth,displayHeight);
+//directionalLight(500, 500, 500, 0, 0, -1);
+//ambientLight(102, 102, 102);
+frameRate(30);
+}
+
+float posX,posY;
+float angle=-45;
+float shift=0;
+
+void draw()
+{
+float centerX=width/2;
+float centerY=height/2;
+float radius=400;
+float ellipseRadius=10;
+
+background(#cccccc);
+fill(#000000);
+stroke(#000000,255);
+//strokeWeight(1);
+
+translate(0,-height/2);
+
+posX=centerX+sin(radians(angle))*radius;
+posY=centerY+cos(radians(angle))*radius;
+
+strokeWeight(10);
+line(centerX,centerY,centerX,centerY+00);
+strokeWeight(1);
+
+line(centerX,centerY,posX,posY);
+//ellipse(posX,posY,ellipseRadius,ellipseRadius);
+shift+=map(angle,-45,45,0.25,-0.25);
+angle=angle+shift;
+
+fill(#cc4455);
+//stroke(#cccccc);
+translate(posX,posY);
+rotateZ(-radians(angle)/2);
+ellipse(0,0,ellipseRadius,ellipseRadius);
+
+
+
+println(angle); 
+}
